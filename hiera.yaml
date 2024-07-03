@@ -1,0 +1,10 @@
+---
+version: 5
+defaults:
+hierarchy:
+  - name: "my hierachy structure"
+    lookup_key: eyaml_lookup_key
+    options:
+      gpg_gnupghome: /opt/puppetlabs/server/data/puppetserver/.gnupg
+    paths:
+      - "common.yaml"
