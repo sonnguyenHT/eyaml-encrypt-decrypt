@@ -1,6 +1,6 @@
 #!/bin/bash
 
-puppetserver_key='son.nt@ltv.dev'
+puppetserver_key='server@ltv.dev'
 recipient_file='gpg_recipients'
 
 if [ $# -ne 1 ]; then

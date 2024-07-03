@@ -5,7 +5,7 @@ if [ $# -eq 0 ]; then
 else
     encrypted_files=$*
 fi
-puppetserver_key='son.nt@ltv.dev'
+puppetserver_key='server@ltv.dev'
 recipient_file='gpg_recipients'
 
 grep $puppetserver_key $recipient_file > /dev/null || { echo "ERROR: ${puppetserver_key} not in recipient file ${recipient_file}. This must NEVER happen!"; exit 1; }
@@ -17,7 +17,8 @@ echo ""
 
 for item in $encrypted_files ; do
     echo "[*] Reencrypting $item"
-    eyaml recrypt --gpg-always-trust --gpg-recipients-file $recipient_file $item
+    eyaml recrypt -d gpg --gpg-always-trust --gpg-recipients-file $recipient_file $item
+    # eyaml recrypt --gpg-always-trust --gpg-recipients-file $recipient_file $item
     if [ $? -eq 0 ] ; then
         echo -e "[+] Successfully reencrypted $item\n"
     else
